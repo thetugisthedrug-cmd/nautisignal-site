@@ -162,7 +162,55 @@
 </div></div></header>
 
 <div class="strip"><div class="wrap">Everyone else can send a <b>text</b>. We make sure it's <b>heard</b> — by the whole fleet, live.</div></div>
-
+<!-- Reliability counter. Figures come from public_metrics_current, recomputed
+     every Monday by a job that refuses to advance the clock through an outage.
+     The section stays hidden unless the fetch succeeds — better to show nothing
+     than a stale or empty number. -->
+<style>
+  #reliability .metricnote{color:var(--mut2);font-size:13px;margin-top:22px}
+  #reliability .stats{margin-top:8px}
+  @media(max-width:560px){#reliability .trustgrid{grid-template-columns:1fr}}
+</style>
+<section id="reliability" hidden><div class="wrap">
+  <div class="center eyebrow">Reliability</div>
+  <h2 class="sec">Every hour so far has been a test hour.</h2>
+  <p class="lead2">The first scored tournament hasn't started yet — so all of NautiSignal's runtime to date is time spent proving it works. These figures are read straight from our own platform telemetry, not written by hand.</p>
+  <div class="stats trustgrid">
+    <div class="stat"><div class="big" id="ns-hours">&mdash;</div><div class="l">Hours running</div></div>
+    <div class="stat"><div class="big" id="ns-events">&mdash;</div><div class="l">Events logged</div></div>
+    <div class="stat"><div class="big" id="ns-tests">&mdash;</div><div class="l">Integration tests passed</div></div>
+  </div>
+  <p class="center metricnote" id="ns-asof"></p>
+</div></section>
+<script>
+(function(){
+  var API='https://yovyrzfgagqcxgwxwuqf.supabase.co/rest/v1/public_metrics_current'
+        + '?select=metric_key,value,status,as_of';
+  var KEY='sb_publishable_62vm-fJEc1GF9IbwzkVxfw_0Jle7iRT';
+  function num(v){ return Number(v).toLocaleString('en-US'); }
+  fetch(API,{headers:{apikey:KEY}})
+    .then(function(r){ if(!r.ok){ throw new Error(r.status); } return r.json(); })
+    .then(function(rows){
+      var m={}; rows.forEach(function(x){ m[x.metric_key]=x; });
+      if(!m.hours_live){ throw new Error('no hours_live'); }
+      document.getElementById('ns-hours').textContent = num(m.hours_live.value);
+      if(m.events_logged){
+        document.getElementById('ns-events').textContent = num(m.events_logged.value);
+      }
+      if(m.integration_tests_passed){
+        document.getElementById('ns-tests').textContent = num(m.integration_tests_passed.value);
+      }
+      var when = new Date(m.hours_live.as_of).toLocaleDateString('en-US',
+        { day:'numeric', month:'long', year:'numeric' });
+      document.getElementById('ns-asof').textContent =
+        (m.hours_live.status === 'held'
+          ? 'Last verified ' + when + '. The counter is paused pending review.'
+          : 'Verified from platform telemetry on ' + when + '. Updated every Monday.');
+      document.getElementById('reliability').hidden = false;
+    })
+    .catch(function(){ /* leave hidden: no number beats a wrong one */ });
+})();
+</script>
 <section id="how-it-works"><div class="wrap">
   <div class="center eyebrow">How It Works</div><h2 class="sec">Report. Verify. Confirm.</h2>
   <p class="lead2">A simple, reliable workflow for managing catch reports, confirming key details, and keeping the whole fleet informed — by voice, app, or text.</p>
