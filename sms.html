@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SMS Policy — NautiSignal</title>
+<style>
+  :root{
+    --ink:#0f2436; --muted:#4a5b6b; --line:#e2e8ee; --bg:#ffffff;
+    --accent:#0b6ab0; --soft:#f5f8fb;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  header{
+    background:linear-gradient(135deg,#0b3a5c,#0b6ab0);
+    color:#fff; padding:48px 24px;
+  }
+  .wrap{max-width:820px; margin:0 auto; padding:0 24px}
+  header .wrap{padding:0}
+  header h1{margin:0 0 6px; font-size:30px; letter-spacing:-.01em}
+  header p{margin:0; opacity:.85; font-size:15px}
+  main{padding:40px 0 72px}
+  h2{font-size:20px; margin:34px 0 10px; color:var(--ink)}
+  h3{font-size:16px; margin:22px 0 6px}
+  p,li{color:var(--muted)}
+  a{color:var(--accent)}
+  ul{padding-left:22px}
+  li{margin:5px 0}
+  .note{
+    background:var(--soft); border:1px solid var(--line);
+    border-radius:10px; padding:16px 18px; margin:18px 0;
+  }
+  .note strong{color:var(--ink)}
+  blockquote.consent{
+    background:var(--soft); border-left:4px solid var(--accent);
+    border-radius:0 10px 10px 0; margin:18px 0; padding:16px 18px;
+    color:var(--ink); font-size:15px;
+  }
+  footer{border-top:1px solid var(--line); padding:26px 0; color:var(--muted); font-size:14px}
+  .updated{font-size:14px; color:var(--muted); margin-top:4px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>SMS Policy</h1>
+    <p>NautiSignal</p>
+  </div>
+</header>
+<main class="wrap">
+  <p class="updated">Last updated: August 11, 2026</p>
+
+  <p>This page describes NautiSignal’s text messaging (SMS) program: what messages we send, how consent is collected, and how to opt out. It supplements our <a href="/privacy.html">Privacy Policy</a> and <a href="/terms.html">Terms of Service</a>.</p>
+
+  <h2>1. What messages we send</h2>
+  <p>NautiSignal sends two kinds of text messages, both tied to operating offshore fishing tournaments:</p>
+  <ul>
+    <li><strong>Account verification codes</strong> — one-time passcodes (OTPs) used to verify your identity when signing in to the NautiSignal application.</li>
+    <li><strong>Tournament operations messages</strong> — messages related to a tournament you are participating in, such as catch confirmations and schedule updates.</li>
+  </ul>
+  <p>We do not send promotional or marketing text messages.</p>
+
+  <h2>2. How consent is collected</h2>
+  <p>Mobile phone numbers are collected on the NautiSignal captain setup form, which participants complete when registering a vessel for a tournament. The form is publicly viewable at:</p>
+  <p><a href="https://catchlink.vercel.app/captain/setup">https://catchlink.vercel.app/captain/setup</a></p>
+  <p>Consent to receive text messages is given by checking a separate, unchecked-by-default checkbox displayed next to the mobile phone field. The checkbox presents the following wording:</p>
+  <blockquote class="consent">
+    “I agree to receive text messages from NautiSignal at the mobile number provided, including
+    account verification codes and tournament operations messages such as catch confirmations and
+    schedule updates. Message frequency varies. Message and data rates may apply. Reply STOP to opt
+    out or HELP for help. Consent is not a condition of purchase. See our Privacy Policy and SMS
+    Policy.”
+  </blockquote>
+  <p>The form cannot be submitted without this box being checked, and the date and time of consent are recorded with the submission.</p>
+
+  <h2>3. Message frequency and rates</h2>
+  <p>Message frequency varies based on your activity — for example, how often you sign in and how many catches your vessel reports during a tournament. Message and data rates may apply according to your mobile carrier’s plan.</p>
+
+  <h2>4. Opting out and getting help</h2>
+  <ul>
+    <li>Reply <strong>STOP</strong> to any NautiSignal message to opt out of SMS at any time.</li>
+    <li>Reply <strong>HELP</strong> for assistance, or contact us at <a href="mailto:info@nautisignal.com">info@nautisignal.com</a>.</li>
+  </ul>
+  <p>Opting out of SMS does not affect your tournament participation, but one-time passcodes cannot be delivered by text after opting out; contact us for alternative sign-in arrangements.</p>
+
+  <div class="note">
+    <p style="margin:0"><strong>We do not sell or share your mobile phone number or SMS consent with third parties or affiliates for their marketing or promotional purposes.</strong> No mobile information will be shared with third parties or affiliates for marketing or promotional purposes. Information shared with subprocessors solely to deliver the messaging service (for example, our SMS delivery provider) is limited to what is required to send the messages and is excluded from any such sharing.</p>
+  </div>
+
+  <h2>5. Consent is not a condition of purchase</h2>
+  <p>Consent to receive text messages is not a condition of purchasing any NautiSignal product or service.</p>
+
+  <h2>6. Other forms on this website</h2>
+  <p>The contact and quote request forms on this website include an optional phone field. Numbers provided there are used only to respond to your inquiry by voice call and are never enrolled in the SMS program described on this page.</p>
+
+  <h2>7. Contact</h2>
+  <p>Questions about this policy: <a href="mailto:info@nautisignal.com">info@nautisignal.com</a>.</p>
+</main>
+<footer class="wrap">
+  © 2026 NautiSignal. All rights reserved. · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a>
+</footer>
+</body>
+</html>
