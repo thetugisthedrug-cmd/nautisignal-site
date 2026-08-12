@@ -130,7 +130,7 @@
   input:focus,select:focus,textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,152,248,.12)}
   textarea{min-height:120px;resize:vertical}
   select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--mut2) 50%),linear-gradient(135deg,var(--mut2) 50%,transparent 50%);background-position:calc(100% - 20px) 55%,calc(100% - 14px) 55%;background-size:6px 6px,6px 6px;background-repeat:no-repeat}
-  .hp{display:none !important}
+  .hp{position:absolute;left:-9999px}
   .fbtn{width:100%;background:var(--blue);color:#fff;font-weight:800;border:0;border-radius:12px;padding:15px;font-size:16px;cursor:pointer;margin-top:8px}
   .fbtn:hover{background:var(--blue2)}
   .altline{text-align:center;color:var(--mut2);font-size:13px;margin-top:16px}
@@ -147,11 +147,11 @@
   <button class="navtoggle" id="nt" aria-label="Menu"><span></span><span></span><span></span></button>
 </div></nav>
 <header class="head"><div class="wrap"><div class="eyebrow">Get a Quote</div><h1>Built around your tournament.</h1><p class="sub">Tell us about your event and we'll put together the right NautiSignal setup and pricing. Volume pricing available for larger fields.</p></div></header>
-<main class="form"><div class="wrap" style="max-width:760px"><form class="formcard" action="https://formsubmit.co/info@nautisignal.com" method="POST">
-  <input type="hidden" name="_subject" value="New Quote Request — NautiSignal"><input type="hidden" name="_captcha" value="false"><input type="hidden" name="_template" value="table"><input type="hidden" name="_next" value="https://www.nautisignal.com/thanks"><input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+<main class="form"><div class="wrap" style="max-width:760px"><form class="formcard" action="https://yovyrzfgagqcxgwxwuqf.supabase.co/functions/v1/website-intake/quote" method="POST">
+  <input type="hidden" name="_subject" value="New Quote Request — NautiSignal"><input type="hidden" name="_captcha" value="false"><input type="hidden" name="_template" value="table"><input type="hidden" name="_next" value="https://www.nautisignal.com/thanks"><input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off">
   <div class="row"><div class="field"><label>Name <span class="req">*</span></label><input type="text" name="Name" required></div>
   <div class="field"><label>Email <span class="req">*</span></label><input type="email" name="Email" required></div></div>
-  <div class="row"><div class="field"><label>Phone</label><input type="tel" name="Phone"><small style="display:block;margin-top:4px;font-size:12.5px;color:#5b6b7a">Used only to respond to your inquiry by voice call — never for text messages. See our <a href="/sms.html">SMS Policy</a>.</small></div>
+  <div class="row"><div class="field"><label>Phone</label><input type="tel" name="Phone"></div>
   <div class="field"><label>Tournament / organization</label><input type="text" name="Tournament name"></div></div>
   <div class="row"><div class="field"><label>Number of boats <span class="req">*</span></label><input type="number" name="Number of boats" min="1" required></div>
   <div class="field"><label>Package <span class="req">*</span></label><select name="Package" required><option value="">Select a package…</option><option>Full Signal — Radio ($75/boat)</option><option>Pro Signal — App ($25/boat)</option><option>Base Signal — Voice ($12/boat)</option><option>Not sure — recommend one</option></select></div></div>
