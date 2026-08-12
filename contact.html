@@ -130,7 +130,7 @@
   input:focus,select:focus,textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,152,248,.12)}
   textarea{min-height:120px;resize:vertical}
   select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--mut2) 50%),linear-gradient(135deg,var(--mut2) 50%,transparent 50%);background-position:calc(100% - 20px) 55%,calc(100% - 14px) 55%;background-size:6px 6px,6px 6px;background-repeat:no-repeat}
-  .hp{position:absolute;left:-9999px}
+  .hp{display:none !important}
   .fbtn{width:100%;background:var(--blue);color:#fff;font-weight:800;border:0;border-radius:12px;padding:15px;font-size:16px;cursor:pointer;margin-top:8px}
   .fbtn:hover{background:var(--blue2)}
   .altline{text-align:center;color:var(--mut2);font-size:13px;margin-top:16px}
@@ -148,7 +148,7 @@
 </div></nav>
 <header class="head"><div class="wrap"><div class="eyebrow">Contact</div><h1>Let's talk tournaments.</h1><p class="sub">Questions about NautiSignal, pricing, or getting set up for your event? Send us a note and we'll get right back to you.</p></div></header>
 <main class="form"><div class="wrap" style="max-width:760px"><form class="formcard" action="https://formsubmit.co/info@nautisignal.com" method="POST">
-  <input type="hidden" name="_subject" value="New Contact — NautiSignal"><input type="hidden" name="_captcha" value="false"><input type="hidden" name="_template" value="table"><input type="hidden" name="_next" value="https://www.nautisignal.com/thanks"><input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off">
+  <input type="hidden" name="_subject" value="New Contact — NautiSignal"><input type="hidden" name="_captcha" value="false"><input type="hidden" name="_template" value="table"><input type="hidden" name="_next" value="https://www.nautisignal.com/thanks"><input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
   <div class="row"><div class="field"><label>Name <span class="req">*</span></label><input type="text" name="Name" required></div>
   <div class="field"><label>Email <span class="req">*</span></label><input type="email" name="Email" required></div></div>
   <div class="row"><div class="field"><label>Phone</label><input type="tel" name="Phone"><small style="display:block;margin-top:4px;font-size:12.5px;color:#5b6b7a">Used only to respond to your inquiry by voice call — never for text messages. See our <a href="/sms.html">SMS Policy</a>.</small></div>
