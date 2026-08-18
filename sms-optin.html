@@ -1,0 +1,76 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>SMS Opt-In Sample — NautiSignal Captain Setup</title>
+<meta name="description" content="A public sample of the SMS consent step on the NautiSignal captain setup form: the exact wording, the separate unchecked-by-default checkbox, and how opt-in is captured.">
+<meta name="robots" content="index,follow"><link rel="icon" type="image/png" href="/favicon.png">
+<link rel="stylesheet" href="/assets/styles.css">
+<style>
+  .previewbar{background:#fff8e6;border:1px solid #f0d894;color:#6b530f;border-radius:12px;padding:13px 16px;font-size:14px;margin:0 0 18px;line-height:1.5}
+  .previewbar b{color:#6b530f}
+  .optin{display:flex;gap:12px;align-items:flex-start;background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:15px 16px;margin:16px 0 6px}
+  .optin input[type=checkbox]{width:20px;height:20px;flex:0 0 auto;margin:2px 0 0;accent-color:var(--blue);cursor:default}
+  .optin label{font-weight:500;font-size:14px;line-height:1.55;color:var(--ink);margin:0;cursor:default}
+  .optin label a{color:var(--blue2);font-weight:700}
+  .formcard[aria-hidden] input:disabled,.formcard input:disabled{background:#fff;opacity:1;color:var(--ink)}
+  .fbtn:disabled{background:var(--mut2);cursor:not-allowed}
+  .stepcap{color:var(--mut2);font-size:12.5px;margin:6px 2px 0}
+  .exp{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px 24px;box-shadow:var(--shadow);margin-top:22px}
+  .exp h2{font-size:19px;margin:0 0 12px}
+  .exp ul{margin:0;padding-left:20px}
+  .exp li{margin:8px 0;color:var(--mut);font-size:14.5px}
+  .exp li b{color:var(--ink)}
+  .liveurl{word-break:break-all}
+</style></head><body id="top">
+<nav><div class="in">
+  <a class="logo" href="/"><img src="/assets/logo.png" alt="NautiSignal"></a>
+  <div class="navlinks" id="nl">
+    <a href="/#how-it-works">How It Works</a><a href="/#devices">Devices</a>
+    <a href="/#packages">Packages</a><a href="/contact">Contact</a>
+    <a class="login" href="https://app.nautisignal.com/director/dashboard">Director Login &rarr;</a>
+  </div>
+  <a class="navcta" href="/quote">Request a Quote</a>
+  <button class="navtoggle" id="nt" aria-label="Menu"><span></span><span></span><span></span></button>
+</div></nav>
+<header class="head"><div class="wrap">
+  <div class="eyebrow">SMS Opt-In</div>
+  <h1>How captains opt in to text messages</h1>
+  <p class="sub">A public sample of the SMS consent step captains complete on the NautiSignal captain setup form — the exact wording and the separate, unchecked-by-default checkbox.</p>
+</div></header>
+<main class="form"><div class="wrap" style="max-width:680px">
+  <div class="previewbar">
+    <b>This is a sample.</b> It shows exactly how the SMS consent step appears on the live captain setup form. It is a static illustration only — nothing on this page is submitted or stored. The working form, where captains register a vessel for a tournament, is at <a class="liveurl" href="https://app.nautisignal.com/captain/setup">app.nautisignal.com/captain/setup</a>.
+  </div>
+
+  <div class="formcard" role="img" aria-label="Sample of the mobile number and SMS consent step on the NautiSignal captain setup form">
+    <div class="field">
+      <label>Mobile phone <span class="req">*</span></label>
+      <input type="tel" value="(555) 012-3456" disabled aria-hidden="true">
+    </div>
+
+    <div class="optin">
+      <input type="checkbox" disabled aria-hidden="true">
+      <label>I agree to receive text messages from NautiSignal at the mobile number provided, including account verification codes and tournament operations messages such as catch confirmations and schedule updates. Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help. Consent is not a condition of purchase. See our <a href="/privacy.html">Privacy Policy</a> and <a href="/sms.html">SMS Policy</a>.</label>
+    </div>
+    <p class="stepcap">The box is unchecked by default. The form cannot be submitted until the captain checks it, and the date and time of consent are recorded with the submission.</p>
+
+    <button class="fbtn" type="button" disabled>Continue</button>
+  </div>
+  <p class="stepcap" style="text-align:center">Sample screen — the button above is inactive on this page.</p>
+
+  <div class="exp">
+    <h2>How consent is collected</h2>
+    <ul>
+      <li><b>Standalone consent.</b> SMS opt-in is a separate checkbox shown next to the mobile phone field. Creating an account or agreeing to the Terms does not by itself enroll anyone in text messaging.</li>
+      <li><b>Unchecked by default.</b> The checkbox is never pre-checked. The captain must actively check it, and the form cannot be submitted otherwise.</li>
+      <li><b>Only two message types.</b> Account verification codes (one-time setup and sign-in codes) and tournament operations messages such as catch confirmations and schedule updates. No marketing, promotions, sweepstakes, raffles, giveaways, contests, or sponsorship, and no third-party content.</li>
+      <li><b>Not a condition of purchase.</b> Declining SMS does not affect tournament participation.</li>
+      <li><b>Opt out any time.</b> Reply <b>STOP</b> to opt out or <b>HELP</b> for help, or contact <a href="mailto:info@nautisignal.com">info@nautisignal.com</a>.</li>
+      <li><b>Live form:</b> <a class="liveurl" href="https://app.nautisignal.com/captain/setup">app.nautisignal.com/captain/setup</a>. Submitting the working form requires a tournament invitation, but the consent step above is exactly what every captain sees before opting in.</li>
+    </ul>
+  </div>
+</div></main>
+<footer><div class="in">
+  <div>© 2026 NautiSignal. Offshore tournament communication, catch reporting &amp; verification.</div>
+  <div class="flinks"><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/sms.html">SMS Policy</a><a href="/contact">Contact</a><a href="https://app.nautisignal.com/director/dashboard" style="color:#4fb4ff">Director Login</a></div>
+</div></footer>
+<script>document.getElementById('nt').addEventListener('click',function(){document.getElementById('nl').classList.toggle('open')});</script>
+</body></html>
