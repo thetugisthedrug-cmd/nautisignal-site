@@ -137,3 +137,33 @@
   @media(max-width:560px){#reliability .trustgrid{grid-template-columns:1fr}}
   /* Stat tiles: 3-across overflows narrow phones (min-width:auto grid items). */
   @media(max-width:560px){.stats{grid-template-columns:1fr}}
+  /* --- How It Works: the catch-journey sketch --- */
+  .flowwrap{margin-top:34px;overflow-x:auto}
+  .flowsketch{display:block;min-width:760px;width:100%;height:auto}
+  /* --- How It Works: simulated director dashboard --- */
+  .dashsim{max-width:900px;margin:38px auto 0;border-radius:16px;overflow:hidden;border:1px solid #14344c;box-shadow:0 22px 50px rgba(11,35,56,.25);background:#0c2438}
+  .dashsim-chrome{display:flex;align-items:center;gap:7px;padding:10px 14px;background:#0a1e30;border-bottom:1px solid #14344c}
+  .dashsim-chrome span{width:10px;height:10px;border-radius:50%;background:#2a4b66}
+  .dashsim-chrome span:first-child{background:#e0484d}
+  .dashsim-chrome span:nth-child(2){background:#dd8400}
+  .dashsim-chrome span:nth-child(3){background:#1a9d55}
+  .dashsim-chrome em{flex:1;text-align:center;font-style:normal;font-size:11.5px;color:#7c93aa;background:#0c2438;border:1px solid #14344c;border-radius:8px;padding:3px 10px;margin-left:6px}
+  .dashsim-body{display:grid;grid-template-columns:1.5fr 1fr;gap:12px;padding:14px}
+  .dashsim-main,.dashsim-side{background:#0e2c44;border:1px solid #1d4562;border-radius:12px;padding:12px}
+  .dashsim-eyebrow{font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#5cc4f0;margin-bottom:10px}
+  .dashsim-counters{display:flex;gap:8px;margin-bottom:10px}
+  .dashsim-counters div{flex:1;text-align:center;background:#0c2438;border:1px solid #1d4562;border-radius:8px;padding:6px 4px;font-size:9.5px;letter-spacing:.1em;color:#7c93aa;font-weight:800}
+  .dashsim-counters b{display:block;font-size:17px;color:#5cc4f0}
+  .dashsim-row{display:flex;align-items:center;gap:10px;justify-content:space-between;background:#0c2438;border:1px solid #1d4562;border-radius:8px;padding:8px 10px;margin-bottom:6px;font-size:12px;color:#d7e6f2}
+  .dashsim-row span+span{color:#7c93aa;flex:1;text-align:left;margin-left:6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .dashsim-row span:first-child{font-weight:800;white-space:nowrap}
+  .dashsim-dim{opacity:.55}
+  .dashsim .pill{font-style:normal;font-size:10px;font-weight:800;letter-spacing:.04em;border-radius:999px;padding:3px 9px;white-space:nowrap;color:#fff}
+  .pill-blue{background:#2563eb}.pill-green{background:#1a9d55}.pill-purple{background:#7c3aed}.pill-amber{background:#dd8400;color:#1d1200}
+  .dashsim-ack{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.1em;color:#7df2be;background:rgba(16,68,49,.6);border:1px solid rgba(125,242,190,.45);border-radius:999px;padding:3px 10px;margin-bottom:10px}
+  .dashsim-boat b{display:block;color:#fff;font-size:14px}
+  .dashsim-boat span{color:#7c93aa;font-size:11.5px}
+  .dashsim-script{margin:10px 0;background:#0c2438;border-left:3px solid #5cc4f0;border-radius:6px;padding:8px 10px;font-size:11.5px;color:#bcd7ee;line-height:1.45}
+  .dashsim-btn{text-align:center;background:#66e3d2;color:#04222c;font-weight:800;font-size:12px;border-radius:8px;padding:8px;margin-top:6px}
+  .dashsim-btn-ghost{background:transparent;border:1px solid #2a5a78;color:#9fc4da}
+  @media(max-width:640px){.dashsim-body{grid-template-columns:1fr}}

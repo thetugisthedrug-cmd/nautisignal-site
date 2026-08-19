@@ -44,16 +44,23 @@
 
 <div class="strip"><div class="wrap">Everyone else can send a <b>text</b>. We make sure it's <b>heard</b> — by the whole fleet, live.</div></div>
 <!-- Reliability counter. Figures come from public_metrics_current, recomputed
-     every Monday by a job that refuses to advance the clock through an outage.
-     The section stays hidden unless the fetch succeeds — better to show nothing
-     than a stale or empty number. -->
+     nightly at 12:01 AM Eastern by a job that refuses to advance the clock
+     through an outage. Engineering figures (lines of code, releases, radio
+     builds) are appended to the same ledger by automation reading the actual
+     repository and release records. The section stays hidden unless the fetch
+     succeeds — better to show nothing than a stale or empty number, and each
+     tile stays hidden until its own metric arrives. -->
 <section id="reliability" hidden><div class="wrap">
   <div class="center eyebrow">Reliability</div>
-<h2 class="sec">Always testing. Always running.</h2>
-  <p class="lead2">These figures are read straight from our own platform telemetry, not written by hand.</p>
+  <h2 class="sec">Always testing. Always running.</h2>
+  <p class="lead2">These figures are read straight from our own platform telemetry and code base, not written by hand.</p>
+  <div class="stats">
     <div class="stat"><div class="big" id="ns-hours">&mdash;</div><div class="l">Hours running</div></div>
     <div class="stat"><div class="big" id="ns-events">&mdash;</div><div class="l">Events logged</div></div>
     <div class="stat"><div class="big" id="ns-tests">&mdash;</div><div class="l">Integration tests passed</div></div>
+    <div class="stat" id="ns-loc-tile" hidden><div class="big" id="ns-loc">&mdash;</div><div class="l">Lines of code</div></div>
+    <div class="stat" id="ns-builds-tile" hidden><div class="big" id="ns-builds">&mdash;</div><div class="l">Radio software builds</div></div>
+    <div class="stat" id="ns-releases-tile" hidden><div class="big" id="ns-releases">&mdash;</div><div class="l">Production releases</div></div>
   </div>
   <p class="center metricnote" id="ns-asof"></p>
 </div></section>
@@ -75,12 +82,21 @@
       if(m.integration_tests_passed){
         document.getElementById('ns-tests').textContent = num(m.integration_tests_passed.value);
       }
+      [['lines_of_code','ns-loc','ns-loc-tile'],
+       ['radio_software_builds','ns-builds','ns-builds-tile'],
+       ['production_releases','ns-releases','ns-releases-tile']]
+        .forEach(function(spec){
+          if(m[spec[0]]){
+            document.getElementById(spec[1]).textContent = num(m[spec[0]].value);
+            document.getElementById(spec[2]).hidden = false;
+          }
+        });
       var when = new Date(m.hours_live.as_of).toLocaleDateString('en-US',
         { day:'numeric', month:'long', year:'numeric' });
       document.getElementById('ns-asof').textContent =
         (m.hours_live.status === 'held'
           ? 'Last verified ' + when + '. The counter is paused pending review.'
-          : 'Verified from platform telemetry on ' + when + '. Updated every Monday.');
+          : 'Verified from platform telemetry on ' + when + '. Updated nightly.');
       document.getElementById('reliability').hidden = false;
     })
     .catch(function(){ /* leave hidden: no number beats a wrong one */ });
@@ -94,6 +110,84 @@
     <div class="card"><div class="n">2</div><h3>Verify</h3><p>NautiSignal helps validate the key details — tournament boundary, timestamp, boat identity, and reported catch — for the director to review.</p></div>
     <div class="card"><div class="n">3</div><h3>Confirm</h3><p>Once verified, the catch is confirmed, logged, and announced to the fleet — live and out loud — keeping every team informed.</p></div>
   </div>
+
+  <!-- The journey of one catch, sketched. Deliberately playful: the product
+       is serious, the day on the water is not. -->
+  <div class="flowwrap">
+    <svg class="flowsketch" viewBox="0 0 1040 300" role="img"
+         aria-label="Sketch of a catch report's journey: a boat calls it in, NautiSignal verifies it, the director confirms, and the whole fleet, dock, and live page hear it at once.">
+      <defs>
+        <marker id="fs-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#0f7ad1"/>
+        </marker>
+      </defs>
+      <!-- water line -->
+      <path d="M20,286 q30,-12 60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0"
+            fill="none" stroke="#bcd7ee" stroke-width="3" stroke-linecap="round"/>
+      <!-- 1. boat -->
+      <g>
+        <rect x="20" y="92" width="200" height="120" rx="16" fill="#ffffff" stroke="#d5e3f2"/>
+        <text x="120" y="140" text-anchor="middle" font-size="34">🚤</text>
+        <text x="120" y="172" text-anchor="middle" font-size="15" font-weight="800" fill="#0b2338">"Sailfish! Release!"</text>
+        <text x="120" y="194" text-anchor="middle" font-size="12.5" fill="#4f677f">The boat calls it in</text>
+      </g>
+      <path d="M226,150 C266,120 286,120 324,144" fill="none" stroke="#0f7ad1" stroke-width="2.5" stroke-dasharray="6 6" marker-end="url(#fs-arrow)"/>
+      <!-- 2. nautisignal -->
+      <g>
+        <rect x="330" y="92" width="200" height="120" rx="16" fill="#ffffff" stroke="#d5e3f2"/>
+        <text x="430" y="140" text-anchor="middle" font-size="34">🧭</text>
+        <text x="430" y="172" text-anchor="middle" font-size="15" font-weight="800" fill="#0b2338">NautiSignal verifies</text>
+        <text x="430" y="194" text-anchor="middle" font-size="12.5" fill="#4f677f">Boat · time · GPS · species</text>
+      </g>
+      <path d="M536,150 C576,120 596,120 634,144" fill="none" stroke="#0f7ad1" stroke-width="2.5" stroke-dasharray="6 6" marker-end="url(#fs-arrow)"/>
+      <!-- 3. director -->
+      <g>
+        <rect x="640" y="92" width="200" height="120" rx="16" fill="#ffffff" stroke="#d5e3f2"/>
+        <text x="740" y="140" text-anchor="middle" font-size="34">🧑‍✈️</text>
+        <text x="740" y="172" text-anchor="middle" font-size="15" font-weight="800" fill="#0b2338">Director confirms</text>
+        <text x="740" y="194" text-anchor="middle" font-size="12.5" fill="#4f677f">"Confirmed. Blue 113."</text>
+      </g>
+      <path d="M846,150 C886,120 906,120 944,144" fill="none" stroke="#0f7ad1" stroke-width="2.5" stroke-dasharray="6 6" marker-end="url(#fs-arrow)"/>
+      <!-- 4. everyone hears it -->
+      <g>
+        <rect x="950" y="72" width="80" height="160" rx="16" fill="#eaf4ff" stroke="#bcd7ee"/>
+        <text x="990" y="112" text-anchor="middle" font-size="26">📻</text>
+        <text x="990" y="152" text-anchor="middle" font-size="26">⚓</text>
+        <text x="990" y="192" text-anchor="middle" font-size="26">📺</text>
+        <text x="990" y="222" text-anchor="middle" font-size="11.5" font-weight="800" fill="#0f7ad1">LIVE</text>
+      </g>
+      <!-- the announcement loops back over everything -->
+      <path d="M950,72 C760,-14 300,-14 120,84" fill="none" stroke="#1a9d55" stroke-width="2.5" stroke-dasharray="2 7" stroke-linecap="round" marker-end="url(#fs-arrow)"/>
+      <text x="520" y="52" text-anchor="middle" font-size="13" font-weight="800" fill="#1a9d55">…and every boat hears the confirmation, seconds later</text>
+    </svg>
+  </div>
+
+  <!-- Simulated product shot: hand-built, so it always matches the current
+       look without shipping anyone's real tournament data. -->
+  <div class="dashsim" role="img" aria-label="Simulated view of the NautiSignal director dashboard showing live catch reports and the review panel.">
+    <div class="dashsim-chrome"><span></span><span></span><span></span><em>app.nautisignal.com/director/dashboard</em></div>
+    <div class="dashsim-body">
+      <div class="dashsim-main">
+        <div class="dashsim-eyebrow">Live Catch Reports</div>
+        <div class="dashsim-counters">
+          <div><b>45</b>APP</div><div><b>27</b>PTT</div><div><b>3</b>OTHER</div>
+        </div>
+        <div class="dashsim-row"><span>#23 Lucky B</span><span>Sailfish · Oliver S.</span><i class="pill pill-blue">BLUE #113</i></div>
+        <div class="dashsim-row"><span>#101 Bluewater Lady</span><span>Sailfish · James T.</span><i class="pill pill-green">GREEN #112</i></div>
+        <div class="dashsim-row"><span>#19 Jenny B</span><span>Tuna · Leighton K.</span><i class="pill pill-purple">PURPLE #111</i></div>
+        <div class="dashsim-row dashsim-dim"><span>#101 Bluewater Lady</span><span>Wahoo · Megan G.</span><i class="pill pill-amber">YELLOW #109</i></div>
+      </div>
+      <div class="dashsim-side">
+        <div class="dashsim-eyebrow">Review &amp; Confirm</div>
+        <div class="dashsim-ack">ACKNOWLEDGED</div>
+        <div class="dashsim-boat"><b>#23 Lucky B</b><span>Oliver S. · Sailfish</span></div>
+        <div class="dashsim-script">"Boat 23. Sailfish, Oliver. Confirmed BLUE 113. Acknowledge."</div>
+        <div class="dashsim-btn">Send Official Response</div>
+        <div class="dashsim-btn dashsim-btn-ghost">Respond by Voice</div>
+      </div>
+    </div>
+  </div>
+  <p class="bcaption">Simulated view of the director dashboard during a live event.</p>
 </div></section>
 
 <div class="broadcast"><section><div class="wrap">
@@ -180,6 +274,12 @@
     <div class="qa"><h4>Are handhelds required?</h4><p>No. NautiSignal is an all-inclusive tournament service. Assigned handhelds can be included when needed, and specialty gear like satellite or Starlink backup can be added only if your tournament requires it.</p></div>
     <div class="qa"><h4>Can captains use a mobile app instead?</h4><p>Yes. Mobile access works as a backup option or as part of a lighter tournament setup.</p></div>
     <div class="qa"><h4>How is pricing set?</h4><p>NautiSignal is priced per boat across three levels — Base, Pro, and Full Signal — with volume pricing for larger fields. Because every event differs in size, length, and needs, we build a final quote around your tournament.</p></div>
+    <div class="qa"><h4>How long does setup take?</h4><p>We handle it. Radios arrive provisioned and paired to your boat list, and your tournament — confirmation codes, boundary, fishing hours, and the voice channel — is configured and checked off a launch checklist before day one.</p></div>
+    <div class="qa"><h4>What happens if a boat loses coverage offshore?</h4><p>Radios carry both cellular and Wi-Fi and switch between them automatically. The live voice channel keeps working wherever there is signal, and catches can always be called in the moment coverage returns — nothing is lost in between. Satellite backup can be added for events that run far offshore.</p></div>
+    <div class="qa"><h4>How are catches verified?</h4><p>Every report carries the boat's identity, a server timestamp, the reported species and angler, and a GPS boundary check. Confirmations use unique color-and-number codes, and each one is logged with a delivery receipt and the boat's acknowledgment — a complete record for any protest.</p></div>
+    <div class="qa"><h4>Do spectators need an app to follow along?</h4><p>No. The live page works in any browser from a link or the QR code on the dock — no login, no download. There's a big-screen feed for TVs at the marina, and the live audio broadcast means the crowd hears every catch as it happens.</p></div>
+    <div class="qa"><h4>What do we get for scoring?</h4><p>A one-click export of every catch in receive order with the official tie-break sequence. Each row carries its status and the director's reason for any disqualification, with a single counts-for-scoring column so a disqualified catch can never be scored by mistake.</p></div>
+    <div class="qa"><h4>Who runs NautiSignal on event day?</h4><p>Your tournament director, from one dashboard — and clean reports can confirm automatically if you want them to. Full Signal events include on-site setup and support, so the technology is our job while the tournament stays yours.</p></div>
   </div>
 </div></section>
 
