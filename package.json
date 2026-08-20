@@ -1,0 +1,9 @@
+{
+  "name": "nautisignal-site",
+  "private": true,
+  "type": "module",
+  "description": "Static marketing site plus the serverless route that serves the client signing portal.",
+  "engines": {
+    "node": "22.x"
+  }
+}
