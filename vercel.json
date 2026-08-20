@@ -1,1 +1,15 @@
-{ "cleanUrls": true, "trailingSlash": false }
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/agreement/:path*", "destination": "/api/agreement/:path*" }
+  ],
+  "headers": [
+    {
+      "source": "/agreement/(.*)",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+      ]
+    }
+  ]
+}

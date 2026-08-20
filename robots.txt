@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /agreement/
 
 Sitemap: https://www.nautisignal.com/sitemap.xml
