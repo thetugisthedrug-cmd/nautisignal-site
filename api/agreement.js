@@ -11,8 +11,13 @@
 //
 // So the fix has to be on our side of the wire: proxy the function through this
 // domain and set the header ourselves. That also means the client never sees a
-// supabase.co URL on a page asking them to sign and pay, which is worth
-// something on its own.
+// supabase.co URL on a page asking them to sign and pay.
+//
+// The portal path arrives as a ?path= query parameter put there by the rewrite
+// in vercel.json, rather than through a [...catch-all] filename. A catch-all
+// under api/ did not resolve on this project — /api/ping deployed fine from the
+// same commit while api/agreement/[...path].js returned 404 — so the routing is
+// kept in vercel.json where it is visible and behaves predictably.
 //
 // Content type is decided by sniffing the body rather than trusting the origin,
 // because the origin's Content-Type is exactly the thing that has been
@@ -60,16 +65,29 @@ function sniffContentType(buffer) {
 }
 
 export default async function handler(req, res) {
-  const segments = Array.isArray(req.query.path) ? req.query.path : [];
-  // Tokens are opaque and already validated upstream; this only stops a path
-  // segment from climbing out of the portal's namespace.
-  if (segments.some((segment) => segment === ".." || segment.includes("/"))) {
+  const query = { ...req.query };
+  // Put there by the rewrite; everything else in the query belongs to the
+  // portal (?paid=1&session_id=… on the way back from Stripe, for one).
+  const rawPath = Array.isArray(query.path) ? query.path.join("/") : String(query.path || "");
+  delete query.path;
+
+  const segments = rawPath.split("/").filter(Boolean);
+  // Tokens are opaque and validated upstream; this only stops a path segment
+  // from climbing out of the portal's namespace.
+  if (segments.some((segment) => segment === "..")) {
     res.status(400).setHeader("Content-Type", "text/plain; charset=utf-8");
     return res.send("Bad request");
   }
 
-  const search = req.url.includes("?") ? req.url.slice(req.url.indexOf("?")) : "";
-  const target = `${ORIGIN}/${segments.map(encodeURIComponent).join("/")}${search}`;
+  const forwarded = new URLSearchParams();
+  for (const [key, value] of Object.entries(query)) {
+    for (const item of Array.isArray(value) ? value : [value]) {
+      if (item !== undefined) forwarded.append(key, String(item));
+    }
+  }
+  const search = forwarded.toString();
+  const target =
+    `${ORIGIN}/${segments.map(encodeURIComponent).join("/")}${search ? `?${search}` : ""}`;
 
   const headers = {};
   for (const [name, value] of Object.entries(req.headers)) {
@@ -103,9 +121,10 @@ export default async function handler(req, res) {
   const buffer = Buffer.from(await upstream.arrayBuffer());
 
   for (const [name, value] of upstream.headers) {
-    if (STRIP_RESPONSE.has(name.toLowerCase())) continue;
+    const lower = name.toLowerCase();
+    if (STRIP_RESPONSE.has(lower)) continue;
     // Set-Cookie must stay separate; combining them loses all but one cookie.
-    if (name.toLowerCase() === "set-cookie") continue;
+    if (lower === "set-cookie") continue;
     res.setHeader(name, value);
   }
   const cookies = typeof upstream.headers.getSetCookie === "function"

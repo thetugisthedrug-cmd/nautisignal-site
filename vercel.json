@@ -2,7 +2,7 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
-    { "source": "/agreement/:path*", "destination": "/api/agreement/:path*" }
+    { "source": "/agreement/:path*", "destination": "/api/agreement?path=:path*" }
   ],
   "headers": [
     {
