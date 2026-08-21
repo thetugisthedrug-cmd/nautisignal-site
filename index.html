@@ -225,6 +225,60 @@
     <div class="lvl u"><div class="t">Urgent Alert</div><p>High-priority situation requiring attention.</p></div>
     <div class="lvl e"><div class="t">Emergency / Mayday</div><p>Highest-priority alert with optional location sharing.</p></div>
   </div>
+
+  <!-- Simulated mayday screens. Same hand-built approach as the dashboard
+       shot: nothing here is a real emergency or a real vessel. -->
+  <div class="radiorow two">
+    <figure class="radiofig">
+      <div class="radiosim" role="img" aria-label="Simulated handheld screen: calling a mayday by holding the orange emergency button for five seconds, with position shown and a cancel option.">
+        <div class="radioscreen">
+          <div class="rs-mayday">MAYDAY</div>
+          <p class="rs-fine">The fleet and the director are interrupted, your position is sent, and the nearest boats are asked to come to you.</p>
+          <div class="rs-pos">26° 46.21′ N · 79° 58.90′ W</div>
+          <div class="rs-holdbar"><i></i><span>HOLD ORANGE BUTTON — 5 SEC</span></div>
+          <div class="rs-btn rs-btn-ghost">CANCEL</div>
+        </div>
+      </div>
+      <figcaption>One button, held five seconds — no menus in an emergency</figcaption>
+    </figure>
+    <figure class="radiofig">
+      <div class="radiosim" role="img" aria-label="Simulated handheld screen: the mayday alert as seen by one of the nearest boats, with the casualty's position and distance.">
+        <div class="radioscreen">
+          <div class="rs-mayday">MAYDAY</div>
+          <div class="rs-vessel" style="text-align:center"><b>#23 Lucky B</b><span class="rs-red">needs immediate assistance</span></div>
+          <div class="rs-pos">26° 46.21′ N · 79° 58.90′ W</div>
+          <div class="rs-pos" style="color:#9fb6ca">1.8 NM from you · fix 40 s old</div>
+          <div class="rs-quote" style="border-left-color:#ff6b70">You are one of the nearest boats. Respond and make way.</div>
+        </div>
+      </div>
+      <figcaption>The nearest boats are asked by name to go</figcaption>
+    </figure>
+  </div>
+
+  <div class="dashsim dashsim-em" role="img" aria-label="Simulated view of the director's emergency console during a mayday: the vessel, its live position, the boats asked to assist, and a ready-to-read script for the authorities.">
+    <div class="dashsim-chrome"><span></span><span></span><span></span><em>app.nautisignal.com/director/emergency</em></div>
+    <div class="dashsim-body">
+      <div class="dashsim-main">
+        <div class="dashsim-eyebrow">Mayday — Fleet and Director Only</div>
+        <div class="dashsim-boat"><b>#23 Lucky B</b><span>Capt. R. Alvarez · 6 souls aboard</span></div>
+        <div class="em-row" style="margin-top:10px"><b>Position</b><span>26° 46.21′ N, 79° 58.90′ W · heading 212° · fix 38 s old</span></div>
+        <div class="dashsim-eyebrow" style="margin-top:12px">Asked to Assist</div>
+        <div class="em-row"><b>#19 Jenny B</b><span>1.8 NM · fix 40 s old</span></div>
+        <div class="em-row"><b>#101 Bluewater Lady</b><span>3.1 NM · fix 65 s old</span></div>
+      </div>
+      <div class="dashsim-side">
+        <div class="dashsim-eyebrow">Read to the Authorities</div>
+        <ul class="em-script">
+          <li>Mayday relay for sportfishing vessel Lucky B, boat 23.</li>
+          <li>Position 26 degrees 46.2 minutes north, 79 degrees 58.9 minutes west, as of one minute ago.</li>
+          <li>Six souls aboard. Nature of distress: unknown.</li>
+        </ul>
+        <div class="dashsim-btn">Copy Script</div>
+        <div class="em-clear">All Clear — Stand Down</div>
+      </div>
+    </div>
+  </div>
+  <p class="bcaption">Simulated views of a mayday drill — the whole chain, from the orange button to the phone call, is ready before it's ever needed.</p>
 </div></section></div>
 
 <section id="devices"><div class="wrap">
@@ -235,6 +289,52 @@
     <div class="card"><h3>Captain Mobile App</h3><p>Mobile access (iOS) for catch submissions, backup voice communication, GPS timestamps, and review.</p></div>
     <div class="card"><h3>Base Station Dashboard</h3><p>A land-based command view for directors to verify reports and manage tournament activity.</p></div>
   </div>
+
+  <!-- Simulated handheld screens: hand-built like the dashboard shot above,
+       so they always match the current look without shipping anyone's real
+       tournament data. -->
+  <div class="radiorow">
+    <figure class="radiofig">
+      <div class="radiosim" role="img" aria-label="Simulated handheld screen: reporting a catch by choosing species and catch type, then holding a button to send.">
+        <div class="radioscreen">
+          <div class="rs-eyebrow">Assigned Vessel</div>
+          <div class="rs-vessel"><b>#23 Lucky B</b><span>Capt. R. Alvarez</span></div>
+          <div class="rs-label">SPECIES</div>
+          <div class="rs-pills"><i class="on">SAILFISH</i><i>TUNA</i><i>WAHOO</i></div>
+          <div class="rs-label">CATCH TYPE</div>
+          <div class="rs-pills"><i class="on">RELEASED</i><i>BOATED</i></div>
+          <div class="rs-btn">HOLD TO REPORT CATCH</div>
+        </div>
+      </div>
+      <figcaption>Two taps and a hold — the catch is in</figcaption>
+    </figure>
+    <figure class="radiofig">
+      <div class="radiosim" role="img" aria-label="Simulated handheld screen: the official confirmation arriving on the boat with its color-and-number code, ready to acknowledge.">
+        <div class="radioscreen">
+          <div class="rs-badge">DIRECTOR ACKNOWLEDGED</div>
+          <div class="rs-card">
+            <div class="rs-eyebrow">Official Confirmation</div>
+            <div class="rs-vessel"><b>Sailfish · Oliver S.</b><span>Reported 10:42 · inside boundary</span></div>
+            <span class="pillcode">BLUE #113</span>
+          </div>
+          <div class="rs-quote">"Boat 23. Sailfish, Oliver. Confirmed BLUE 113. Acknowledge."</div>
+          <div class="rs-btn">TAP TO ACKNOWLEDGE</div>
+        </div>
+      </div>
+      <figcaption>The official word comes back — spoken and on screen</figcaption>
+    </figure>
+    <figure class="radiofig">
+      <div class="radiosim" role="img" aria-label="Simulated handheld idle screen: a sponsor spotlight shown between the action.">
+        <div class="radioscreen">
+          <div class="rs-eyebrow">Between the Action</div>
+          <div class="rs-sponsor"><b>YOUR LOGO HERE</b><span>Today's fleet presented by<br>Marina Grill &amp; Tackle</span></div>
+          <div class="rs-btn rs-btn-ghost">SCROLL DOWN TO REPORT A CATCH</div>
+        </div>
+      </div>
+      <figcaption>Sponsor spotlights ride along in every boat</figcaption>
+    </figure>
+  </div>
+  <p class="bcaption">Simulated handheld screens — hand-drawn to match the real device.</p>
 </div></section>
 
 <section id="packages"><div class="wrap">
