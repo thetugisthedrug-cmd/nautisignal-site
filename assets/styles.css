@@ -302,3 +302,20 @@
   .sitem b{display:block;font-family:var(--font-display);font-weight:600;font-size:13.5px}
   .sitem span{display:block;color:var(--mut);font-size:12.5px;line-height:1.5;margin-top:2px}
   @media(max-width:860px){.surfaces{grid-template-columns:1fr}.sgroup-opt .sg-list{grid-template-columns:1fr}}
+  /* --- Case studies: model tournament profiles --- */
+  .cs-main{padding:40px 0 88px}
+  .cs-honesty{text-align:center;color:var(--mut2);font-size:13px;max-width:640px;margin:0 auto 40px}
+  .cs{max-width:860px;margin:0 auto 28px;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);overflow:hidden}
+  .cs-head{padding:26px 30px 20px;border-bottom:1px solid var(--line);background:var(--card2)}
+  .cs-head h2{margin:6px 0 14px;font-size:23px;font-weight:700}
+  .cs-profile{display:flex;flex-wrap:wrap;gap:8px}
+  .cs-profile span{font-family:var(--font-mono);font-size:11px;letter-spacing:.03em;color:var(--mut);background:#fff;border:1px solid var(--line);border-radius:6px;padding:5px 10px;white-space:nowrap}
+  .cs-body{padding:10px 30px 26px}
+  .cs-body section{padding:16px 0;border-top:1px solid var(--line)}
+  .cs-body section:first-child{border-top:0}
+  .cs-body h3{margin:0 0 6px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--blue)}
+  .cs-body p{margin:0;color:var(--mut);font-size:15px;line-height:1.65}
+  .cs-cta{max-width:860px;margin:52px auto 0;text-align:center}
+  .cs-cta h2{font-size:26px;margin:0 0 10px;font-weight:700}
+  .cs-cta p{color:var(--mut);max-width:560px;margin:0 auto 24px}
+  @media(max-width:640px){.cs-head{padding:20px 20px 16px}.cs-body{padding:6px 20px 20px}}
