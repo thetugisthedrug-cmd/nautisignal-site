@@ -105,61 +105,36 @@
 <section id="how-it-works"><div class="wrap">
   <div class="center eyebrow">How It Works</div><h2 class="sec">Report. Verify. Confirm.</h2>
   <p class="lead2">A simple, reliable workflow for managing catch reports, confirming key details, and keeping the whole fleet informed — by voice, app, or text.</p>
-  <div class="grid3">
-    <div class="card"><div class="n">1</div><h3>Report</h3><p>Boats report a catch by voice, app, or text. The system captures the vessel, angler, species, time, status, and location.</p></div>
-    <div class="card"><div class="n">2</div><h3>Verify</h3><p>NautiSignal helps validate the key details — tournament boundary, timestamp, boat identity, and reported catch — for the director to review.</p></div>
-    <div class="card"><div class="n">3</div><h3>Confirm</h3><p>Once verified, the catch is confirmed, logged, and announced to the fleet — live and out loud — keeping every team informed.</p></div>
+  <!-- The path of one catch, drawn like the system diagram it is. -->
+  <div class="flowsteps" role="img" aria-label="The path of a catch report: the boat reports it; NautiSignal captures identity, time, and position; the details are verified against the tournament rules; the director confirms and the code is assigned.">
+    <div class="flowstep">
+      <span class="fs-k"><i>01</i>Report</span>
+      <b>The boat calls it in</b>
+      <p>By radio, app, or text — the moment the fish is released.</p>
+      <span class="fs-d">VOICE &middot; APP &middot; SMS</span>
+    </div>
+    <div class="flowstep">
+      <span class="fs-k"><i>02</i>Capture</span>
+      <b>Every detail is logged</b>
+      <p>Vessel identity, server timestamp, GPS position, species, angler.</p>
+      <span class="fs-d">BOAT 23 &middot; 10:42:07 &middot; GPS FIX</span>
+    </div>
+    <div class="flowstep">
+      <span class="fs-k"><i>03</i>Verify</span>
+      <b>Checked against the rules</b>
+      <p>Boundary, fishing hours, and boat identity validated for review.</p>
+      <span class="fs-d">IN BOUNDS &middot; LINES IN</span>
+    </div>
+    <div class="flowstep">
+      <span class="fs-k"><i>04</i>Confirm</span>
+      <b>The director makes it official</b>
+      <p>A unique code is assigned, logged, and announced to the fleet.</p>
+      <span class="fs-d">CONFIRMED &middot; BLUE #113</span>
+    </div>
   </div>
-
-  <!-- The journey of one catch, sketched. Deliberately playful: the product
-       is serious, the day on the water is not. -->
-  <div class="flowwrap">
-    <svg class="flowsketch" viewBox="0 0 1040 300" role="img"
-         aria-label="Sketch of a catch report's journey: a boat calls it in, NautiSignal verifies it, the director confirms, and the whole fleet, dock, and live page hear it at once.">
-      <defs>
-        <marker id="fs-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-          <path d="M0,0 L10,5 L0,10 z" fill="#0f7ad1"/>
-        </marker>
-      </defs>
-      <!-- water line -->
-      <path d="M20,286 q30,-12 60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0"
-            fill="none" stroke="#bcd7ee" stroke-width="3" stroke-linecap="round"/>
-      <!-- 1. boat -->
-      <g>
-        <rect x="20" y="92" width="200" height="120" rx="16" fill="#ffffff" stroke="#d5e3f2"/>
-        <text x="120" y="140" text-anchor="middle" font-size="34">🚤</text>
-        <text x="120" y="172" text-anchor="middle" font-size="15" font-weight="800" fill="#0b2338">"Sailfish! Release!"</text>
-        <text x="120" y="194" text-anchor="middle" font-size="12.5" fill="#4f677f">The boat calls it in</text>
-      </g>
-      <path d="M226,150 C266,120 286,120 324,144" fill="none" stroke="#0f7ad1" stroke-width="2.5" stroke-dasharray="6 6" marker-end="url(#fs-arrow)"/>
-      <!-- 2. nautisignal -->
-      <g>
-        <rect x="330" y="92" width="200" height="120" rx="16" fill="#ffffff" stroke="#d5e3f2"/>
-        <text x="430" y="140" text-anchor="middle" font-size="34">🧭</text>
-        <text x="430" y="172" text-anchor="middle" font-size="15" font-weight="800" fill="#0b2338">NautiSignal verifies</text>
-        <text x="430" y="194" text-anchor="middle" font-size="12.5" fill="#4f677f">Boat · time · GPS · species</text>
-      </g>
-      <path d="M536,150 C576,120 596,120 634,144" fill="none" stroke="#0f7ad1" stroke-width="2.5" stroke-dasharray="6 6" marker-end="url(#fs-arrow)"/>
-      <!-- 3. director -->
-      <g>
-        <rect x="640" y="92" width="200" height="120" rx="16" fill="#ffffff" stroke="#d5e3f2"/>
-        <text x="740" y="140" text-anchor="middle" font-size="34">🧑‍✈️</text>
-        <text x="740" y="172" text-anchor="middle" font-size="15" font-weight="800" fill="#0b2338">Director confirms</text>
-        <text x="740" y="194" text-anchor="middle" font-size="12.5" fill="#4f677f">"Confirmed. Blue 113."</text>
-      </g>
-      <path d="M846,150 C886,120 906,120 944,144" fill="none" stroke="#0f7ad1" stroke-width="2.5" stroke-dasharray="6 6" marker-end="url(#fs-arrow)"/>
-      <!-- 4. everyone hears it -->
-      <g>
-        <rect x="950" y="72" width="80" height="160" rx="16" fill="#eaf4ff" stroke="#bcd7ee"/>
-        <text x="990" y="112" text-anchor="middle" font-size="26">📻</text>
-        <text x="990" y="152" text-anchor="middle" font-size="26">⚓</text>
-        <text x="990" y="192" text-anchor="middle" font-size="26">📺</text>
-        <text x="990" y="222" text-anchor="middle" font-size="11.5" font-weight="800" fill="#0f7ad1">LIVE</text>
-      </g>
-      <!-- the announcement loops back over everything -->
-      <path d="M950,72 C760,-14 300,-14 120,84" fill="none" stroke="#1a9d55" stroke-width="2.5" stroke-dasharray="2 7" stroke-linecap="round" marker-end="url(#fs-arrow)"/>
-      <text x="520" y="52" text-anchor="middle" font-size="13" font-weight="800" fill="#1a9d55">…and every boat hears the confirmation, seconds later</text>
-    </svg>
+  <div class="flowreturn">
+    <span class="lv"><i></i>LIVE</span>
+    <span>The confirmation is <b>heard fleet-wide within seconds</b> — every boat, the dock, and the live broadcast.</span>
   </div>
 
   <!-- Simulated product shot: hand-built, so it always matches the current
@@ -187,13 +162,13 @@
       </div>
     </div>
   </div>
-  <p class="bcaption">Simulated view of the director dashboard during a live event.</p>
+  <p class="bcaption">The director console &mdash; shown here with simulated event data.</p>
 </div></section>
 
 <div class="broadcast"><section><div class="wrap">
   <div class="center eyebrow">More than a safety call</div><h2 class="sec">Everyone hears the action — live.</h2>
   <p class="lead2">NautiSignal isn't point-to-point. It's a live audio broadcast the whole tournament can tune into — the moment a catch is made, it's heard everywhere at once.</p>
-  <div class="reach"><div class="chip">🚤 Every boat</div><div class="chip">⚓ The dock &amp; spectators</div><div class="chip">💻 Your website</div><div class="chip">📺 The TV feed</div></div>
+  <div class="reach"><div class="chip"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 15h18l-2 4H5z"/><path d="M6 15V9h9l3 6"/><path d="M9 9V5h3v4"/></svg>Every boat</div><div class="chip"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="5" r="2.2"/><path d="M12 7.2V20"/><path d="M4 13c0 4 3.5 7 8 7s8-3 8-7"/><path d="M8.5 10.5h7"/></svg>The dock &amp; spectators</div><div class="chip"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17"/><path d="M12 3.5c2.6 2.3 2.6 14.7 0 17"/><path d="M12 3.5c-2.6 2.3-2.6 14.7 0 17"/></svg>Your website</div><div class="chip"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="1.5"/><path d="M9 21h6"/></svg>The TV feed</div></div>
 
   <!-- Simulated spectator surfaces, hand-built like the other product
        shots: the marina TV feed and the live page on any phone. -->
@@ -250,13 +225,13 @@
       <figcaption>Any phone, from a link or the dock QR — no app, no login</figcaption>
     </figure>
   </div>
-  <p class="bcaption">Simulated views of the live broadcast — what the dock and the crowd back home see while the fleet fishes.</p>
+  <p class="bcaption">The live broadcast surfaces, shown with simulated event data — what the dock and the audience at home follow while the fleet fishes.</p>
 
   <div class="grid2" style="max-width:900px;margin:0 auto">
     <div class="card"><h3>The sound of the day</h3><p style="margin-bottom:14px;color:var(--mut)">Real voices, called the instant they happen.</p>
-      <ul class="taglist"><li>Catches called live</li><li>Captains on the mic</li><li>Boat-to-boat chatter</li><li>Director play-by-play</li><li>Commentary &amp; jokes</li><li>Event announcements</li></ul></div>
+      <ul class="taglist"><li>Catches called live</li><li>Captains on the mic</li><li>Boat-to-boat chatter</li><li>Director play-by-play</li><li>Live color commentary</li><li>Event announcements</li></ul></div>
     <div class="card"><h3>Bring the crowd in</h3><p style="margin-bottom:14px;color:var(--mut)">Turn spectators — on the dock and online — into part of the show.</p>
-      <ul class="taglist"><li>Live commentary</li><li>Catch highlights</li><li>Play-by-play</li><li>Live polls</li><li>Shout-outs</li><li>All the action</li></ul></div>
+      <ul class="taglist"><li>Live commentary</li><li>Catch highlights</li><li>Play-by-play</li><li>Live polls</li><li>Sponsor features</li><li>Final-hour countdowns</li></ul></div>
   </div>
   <p class="bcaption">The difference between a leaderboard people check and a broadcast people don't want to miss.</p>
 </div></section></div>
@@ -336,7 +311,7 @@
       </div>
     </div>
   </div>
-  <p class="bcaption">Simulated views of a mayday drill — the whole chain, from the orange button to the phone call, is ready before it's ever needed.</p>
+  <p class="bcaption">A mayday drill, shown with simulated data — the entire chain, from the orange button to the call to the authorities, rehearsed before it is ever needed.</p>
 </div></section></div>
 
 <section id="devices"><div class="wrap">
@@ -392,7 +367,7 @@
       <figcaption>Sponsor spotlights ride along in every boat</figcaption>
     </figure>
   </div>
-  <p class="bcaption">Simulated handheld screens — hand-drawn to match the real device.</p>
+  <p class="bcaption">The handheld interface, shown with simulated data &mdash; exactly as it renders on the production device.</p>
 </div></section>
 
 <section id="packages"><div class="wrap">
@@ -419,10 +394,10 @@
   <p class="pkgnote" style="font-size:.9em;opacity:.8">Text (SMS) messages are limited to account verification codes and tournament operations alerts such as catch confirmations and schedule updates — never marketing, promotions, sweepstakes, or third-party content. See our <a href="/sms.html">SMS Policy</a>.</p>
 </div></section>
 
-<section><div class="wrap"><div class="stats">
-  <div class="stat"><div class="big">100+</div><div class="l">Device ready</div></div>
-  <div class="stat"><div class="big">Offshore</div><div class="l">Built for tournaments</div></div>
-  <div class="stat"><div class="big">Live</div><div class="l">Director dashboard</div></div>
+<section><div class="wrap"><div class="assure">
+  <div><b>Purpose-built hardware</b><span>Provisioned, paired, and tested before it ships to your dock.</span></div>
+  <div><b>Complete audit trail</b><span>Every report, confirmation, and acknowledgment logged with receipts.</span></div>
+  <div><b>On-site event support</b><span>Full Signal events run with our team standing beside yours.</span></div>
 </div></div></section>
 
 <section><div class="wrap">
