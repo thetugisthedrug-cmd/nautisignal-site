@@ -289,3 +289,5 @@
   .ph-row span{color:#6f8ba3;font-family:var(--font-mono);font-variant-numeric:tabular-nums}
   @media(max-width:860px){.liverow{grid-template-columns:1fr;max-width:520px}.phonesim{max-width:270px;margin:0 auto;width:100%}.tv-body{grid-template-columns:1fr}}
   @media(prefers-reduced-motion:reduce){.tv-live i,.tv-onair .oa i,.flowreturn .lv i{animation:none}}
+  .flowstep .fs-note{display:block;border-top:1px solid var(--line);margin-top:12px;padding-top:10px;font-size:12px;line-height:1.55;color:var(--mut)}
+  .flowstep .fs-note b{display:block;font-family:var(--font-display);font-weight:600;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--mut2);margin-bottom:4px}
