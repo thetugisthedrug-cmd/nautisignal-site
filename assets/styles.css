@@ -291,3 +291,14 @@
   @media(prefers-reduced-motion:reduce){.tv-live i,.tv-onair .oa i,.flowreturn .lv i{animation:none}}
   .flowstep .fs-note{display:block;border-top:1px solid var(--line);margin-top:12px;padding-top:10px;font-size:12px;line-height:1.55;color:var(--mut)}
   .flowstep .fs-note b{display:block;font-family:var(--font-display);font-weight:600;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--mut2);margin-bottom:4px}
+  /* Every surface a confirmation reaches, standard vs optional. */
+  .surfaces{display:grid;grid-template-columns:3fr 4fr;gap:14px;max-width:1012px;margin:14px auto 0}
+  .sgroup{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px}
+  .sgroup-opt{border-style:dashed}
+  .sg-h{font-family:var(--font-display);font-size:10.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--mut2);margin-bottom:12px}
+  .sgroup-opt .sg-h{color:var(--blue)}
+  .sg-list{display:grid;gap:10px}
+  .sgroup-opt .sg-list{grid-template-columns:1fr 1fr}
+  .sitem b{display:block;font-family:var(--font-display);font-weight:600;font-size:13.5px}
+  .sitem span{display:block;color:var(--mut);font-size:12.5px;line-height:1.5;margin-top:2px}
+  @media(max-width:860px){.surfaces{grid-template-columns:1fr}.sgroup-opt .sg-list{grid-template-columns:1fr}}
